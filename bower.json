@@ -1,0 +1,18 @@
+{
+	"name": "angular-file-change",
+	"authors": [
+		"Matheus Rufca <matheus.rufca@gmail.com>"
+	],
+	"description": "Angular directive to add handler on input[type=file] when it changes",
+	"main": "",
+	"keywords": [ "file", "change", "input", "directive", "angularjs", "angular" ],
+	"license": "MIT",
+	"homepage": "https://github.com/matheusrufca/angular-file-change",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	]
+}

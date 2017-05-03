@@ -1,0 +1,46 @@
+<html>
+<head>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+	<link href="site.css" rel="stylesheet" />
+</head>
+<body ng-app="app">
+	<div class="container" ng-controller="DemoCtrl">
+		<h2>Angular fileChange directive</h2>
+		<div class="form-group">
+			<input type="file" file-change="handleFileSelect" multiple />
+		</div>
+
+		<div ng-if="filesInfo.length">
+			<pre class="file-info"> {{filesInfo | json}} </pre>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+	<script src="../dist/angular-file-change.js"></script>
+	<script>
+		(function () {
+			angular.module('app', ['mr'])
+				.controller('DemoCtrl', function ($scope) {
+					$scope.filesInfo = [];
+
+					$scope.handleFileSelect = function (evt) {
+						var elm = angular.copy((evt || {}).srcElement);
+						var files = elm.files || [];
+
+						$scope.filesInfo = [];
+
+						$scope.$apply(function () {
+							angular.forEach(files, function (item) {
+								$scope.filesInfo.push({
+									name: item.name,
+									size: item.size,
+									type: item.type
+								});
+							})
+							alert('Input changed. Files: ' + files.length);
+						});
+					};
+				});
+		})()
+	</script>
+</body>
+</html>
